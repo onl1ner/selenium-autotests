@@ -5,14 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AppleLoginPage {
     private WebDriver driver;
 
-    @FindBy(xpath = "//input[@id='login']")
+    @FindBy(css = "input[id='login']")
     private WebElement emailField;
 
-    @FindBy(xpath = "//input[@id='password']")
+    @FindBy(css = "input[id='password']")
     private WebElement passwordField;
 
     @FindBy(xpath = "//button[@class='btn btn-brand-blue circled ng-star-inserted']")
