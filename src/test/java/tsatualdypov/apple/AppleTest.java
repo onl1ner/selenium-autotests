@@ -15,6 +15,7 @@ public class AppleTest {
 
     private static AppleMainPage mainPage;
     private static AppleLoginPage loginPage;
+    private static AppleSearchPage searchPage;
 
     @BeforeClass
     public static void setup() {
@@ -28,11 +29,12 @@ public class AppleTest {
 
         mainPage = new AppleMainPage(driver);
         loginPage = new AppleLoginPage(driver);
+        searchPage = new AppleSearchPage(driver);
     }
 
     @Test
     public void testLogin() {
-        mainPage.signIn();
+        mainPage.openSignIn();
 
         this.implicitlyWait(2);
 
@@ -59,7 +61,22 @@ public class AppleTest {
 
         this.implicitlyWait(5);
 
-        Assert.assertEquals(false, mainPage.isLoggedIn());
+        Assert.assertFalse(mainPage.isLoggedIn());
+    }
+
+    @Test
+    public void testSearch() {
+        String query = "iPhone 13";
+
+        searchPage.openSearch();
+
+        this.implicitlyWait(2);
+
+        searchPage.search(query);
+
+        this.implicitlyWait(10);
+
+        Assert.assertTrue(searchPage.getSearchQuery().contains(query));
     }
 
     @AfterClass
