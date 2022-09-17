@@ -1,4 +1,4 @@
-package tsatualdypov;
+package tsatualdypov.aviasales;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
