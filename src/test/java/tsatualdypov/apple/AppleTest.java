@@ -84,7 +84,7 @@ public class AppleTest {
         driver.quit();
     }
 
-    protected void implicitlyWait(long duration) {
+    private void implicitlyWait(long duration) {
         driver.manage().timeouts().implicitlyWait(duration, TimeUnit.SECONDS);
     }
 }
