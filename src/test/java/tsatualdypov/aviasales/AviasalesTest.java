@@ -32,30 +32,56 @@ public class AviasalesTest {
 
     @Test
     public void testBooking() {
+        // On the search page inputting origin
+        // city in the origin city field.
         searchPage.inputOrigin("Астана");
 
         this.implicitlyWait(5);
 
+        // Inputting destination city in the
+        // destination city field.
         searchPage.inputDestination("Алматы");
 
         this.implicitlyWait(5);
 
+        // Selecting random date by picking
+        // next month's any week and any day
+        // in it.
         searchPage.selectRandomDate();
 
         this.implicitlyWait(5);
 
+        // Pressing search button to perform
+        // ticket search.
         searchPage.performSearch();
 
         this.implicitlyWait(60);
 
+        // In the opened search result page
+        // selecting first ticket.
         searchPage.selectFirstSearchResult();
 
         this.implicitlyWait(5);
 
+        // Capturing number of tabs before
+        // pressing the buy ticket button.
+        ArrayList<String> tabsBefore = new ArrayList<String>(driver.getWindowHandles());
+
+        // In the opened modal ticket page
+        // pressing on the buy ticket button.
         ticketPage.buy();
 
-        ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-        Assert.assertEquals(2, tabs.size());
+        // Getting number of tabs after
+        // clicking on the buy ticket button.
+        ArrayList<String> tabsAfter = new ArrayList<String>(driver.getWindowHandles());
+
+        // Finally, checking if number of tabs
+        // before clicking on the buy ticket
+        // is less than number of tabs after clicking
+        // on this button, if it is true, this means
+        // that website have successfully redirected
+        // user to the buy ticket page.
+        Assert.assertTrue(tabsBefore.size() < tabsAfter.size());
     }
 
     @AfterClass

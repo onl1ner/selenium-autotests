@@ -30,7 +30,7 @@ public class AppleSearchPage {
         this.searchButton.click();
     }
 
-    public void search(String query) {
+    public void inputQuery(String query) {
         this.searchField.sendKeys(query);
         this.searchField.sendKeys(Keys.ENTER);
     }
